@@ -5,7 +5,7 @@ class Node {
     }
 }
 // 1-2-3-4-5  n=2    remove the 2 node from the last;
-var test = function (head, n) {
+var removeTheNthNodeFromTheLastOfList = function (head, n) {
     var curr = head;
     var len = 1;
     while (curr.next) {
@@ -23,4 +23,4 @@ var test = function (head, n) {
 
 const head = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5)))))
 
-console.log(test(head, 4));
+console.log(removeTheNthNodeFromTheLastOfList(head, 4));
