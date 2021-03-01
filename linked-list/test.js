@@ -10,17 +10,15 @@ var test = function (head, n) {
     var len = 1;
     while (curr.next) {
         len++
-        curr = curr.next;
+        curr = curr.next
     }
-    if (n%len === 0 || n < 1) return null;
-    var newHead =  head;
-    for(let i=1; i < len-n; i++){
-        newHead = newHead.next
+    var nH = head;
+    for(let i=1; i < len-n; i++) {
+        nH = nH.next
     }
-    newHead.next = newHead.next.next;
-    return newHead;
+    return nH.next
 };
 
 const head = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5)))))
 
-console.log(test(head, 4));
+console.log(test(head, 2));
