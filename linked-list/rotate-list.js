@@ -1,14 +1,3 @@
-/**
- * Definition for singly-linked list.
- * function Node(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- *
- * @param {ListNode} head
- * @param {number} k
- * @return {ListNode}
- */
 class Node {
     constructor(val, next) {
         this.val = val === undefined ? 0 : val;
