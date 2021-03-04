@@ -4,18 +4,21 @@ class Node {
         this.next = next === undefined ? null : next;
     }
 }
-/**
- * Merge two sorted linked lists such that merged list is in reverse order
-   
-    Input:  a: 5->10->15->40
-            b: 2->3->20 
-    Output: res: 40->20->15->10->5->3->2
-*/
 
-var test = function (head1, head2) {
+var middleNode = function (head) {
+    if (!head) return head;
+    var odd = head;
+    var even = head.next;
+    var evenHead = head.next
+    while (odd.next) {
+        odd.next = even.next
+        odd = odd.next
+        even.next = odd.next
+        even = even.next;
+    }
+    odd.next = evenHead;
+    return head
 };
+const head = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5, new Node(6, new Node(7)))))))
 
-const head1 = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5)))))
-const head2 = new Node(0, new Node(4, new Node(2, new Node(6, new Node(4)))))
-
-console.log(test(head1, head2));
+console.log(middleNode(head));
