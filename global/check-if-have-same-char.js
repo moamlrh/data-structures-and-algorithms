@@ -21,6 +21,7 @@ function checkIfTheSameChars(str1, str2) {
         if (chars[char]) return false
         else return true
     }
+    return true
 }
 
-console.log(checkIfTheSameChars('abbaaam', 'baaadsfsadfaba'))
+console.log(checkIfTheSameChars('ahmed', 'ahmed'))
