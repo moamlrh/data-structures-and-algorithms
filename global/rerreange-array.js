@@ -1,11 +1,12 @@
-function rerRrangeArray(arr = new Array) {
+function rerRrangeArray(arr) {
     let pos = [], neg = [], res = [];
-    let length = pos.length > neg.length ? pos.length : neg.length;
 
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] < 0) neg.push(arr[i])
         else pos.push(arr[i])
     }
+
+    let length = pos.length > neg.length ? pos.length : neg.length;
     for (let i = 0; i < length; i++) {
         pos[i] !== undefined && res.push(pos[i])
         neg[i] !== undefined && res.push(neg[i])
