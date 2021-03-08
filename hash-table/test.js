@@ -1,39 +1,35 @@
 class HashTable {
-    constructor() {
-        this.size = 10;
-        this.values = Array(this.size)
-
-        for (let i = 0; i < this.values.length; i++) {
-            this.values[i] = new Map()
-        }
+    constructor(size) {
+        this.data = new Array(size)
     }
-    hash = key => {
-        let hashed = 0;
+    _hash(key) {
+        let hash = 0;
         for (let i = 0; i < key.length; i++) {
-            hashed += key.charCodeAt(i)
+            hash = (hash + key.charCodeAt(i) * i) % this.data.length
         }
-        return hashed % this.size;
+        return hash;
     }
-    insert(key, value) {
-        const idx = this.hash(key)
-        this.values[idx].set(key, value)
+    set(key, value) {
+        const idx = this._hash(key)
+        if (!this.data[idx]) this.data[idx] = []
+        this.data[idx].push([key, value])
+        return this.data
     }
-    delete(key) {
-        const idx = this.hash(key);
-        return this.values[idx].delete(key)
-    }
-
-    search(key) {
-        const idx = this.hash(key)
-        return this.values[idx].get(key)
+    get(key) {
+        const idx = this._hash(key)
+        let curr = this.data[idx]
+        if (curr) {
+            for (let i = 0; i < curr.length; i++) if (curr[i][0] === key) return curr[i][1]
+        }
+        return false
     }
 }
 
+const test = new HashTable(20)
 
-const hash = new HashTable()
-hash.insert(1, 'moaml')
-hash.insert(2, 'riad')
-hash.insert(3, 'hussein')
-console.log(hash.search(1))
-hash.delete(2)
-console.log(hash)
+console.log(test.set('name', 'Moaml Riad'))
+console.log(test.set('name2', 'Moaml Riad'))
+console.log(test.set('name3', 'ahmed ali'))
+console.log(test.set('name5', 'mohammed ahmed'))
+console.log(test.get('name4'))
+console.log(test.get('name'))
