@@ -1,34 +1,20 @@
-/**
- * 
- * @param {array} arr 
- * @param {index} item 
- */
+function binarySearch(arr,target) {
+	let left = 0, right = arr.length - 1;
 
+	while (left <= right) {
+		let mid = Math.round((right + left ) / 2);
+		let guss = arr[mid];
 
-/**
- * 
- * arr = [1,2,3,4,5,6,7,8]
- * mid = 0 + arr.lengt => mid = 7
- * gusse = arr[mid] => gusse = 8
- * 
- * 
- */
-function binarySearch(arr,item) {
-	let low = 0;
-	let high = arr.length - 1;
-	while (low <= high) {
-		let mid = Math.round((high + low)/2)
-		let gusse = arr[mid]
-		if(gusse === item){
-			return mid;
-		}else if(gusse > item){
-			high = mid - 1
-		}else{
-			low = mid + 1
-		}
+		if(guss == target) return mid;
+		if(guss > target) right = mid - 1;
+		if(guss < target) left = mid + 1;
 	}
 
-	return null;
+	return -1; // if not found
 }
 
-console.log(binarySearch([1,2,3,4,5,6,7,8], 1))
+
+const arr = [-1,0,1,3,5,7,8,9,11,15,19,100,150,324,555,646,756,875, 990];
+const target = 555;
+
+console.log(binarySearch(arr, target))
