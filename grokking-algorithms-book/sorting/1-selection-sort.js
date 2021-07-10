@@ -6,11 +6,13 @@ function selectionSort(arr) {
         min = j;
       }
     }
-    let tmp = arr[i];
-    arr[i] = arr[min];
-    arr[min] = tmp;
+    if (i != min) {
+      let tmp = arr[i];
+      arr[i] = arr[min];
+      arr[min] = tmp;
+    }
   }
   return arr;
 }
 
-console.log(selectionSort([9, 3, 8, 4, 7, 5, 5, 1, 0, -1, 10]));
+console.log(selectionSort([9, 3, 8, -12, 4, 7, 5, 5, 1, 0, -1, 10]));
